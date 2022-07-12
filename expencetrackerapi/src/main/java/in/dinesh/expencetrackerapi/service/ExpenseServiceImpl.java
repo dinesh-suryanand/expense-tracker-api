@@ -46,7 +46,10 @@ public class ExpenseServiceImpl implements ExpenseService{
     public Expense updateExpenseDetails(Long id , Expense expense) {
         Expense existingExpense = getExpenseById(id);
 
+        //since Id field is AutoGenerate we no need to  do the null check
 //        existingExpense.setId(expense.getId() !=null ? expense.getId() : existingExpense.getId());
+
+        //null check  i.e checking weather the object is present or not
         existingExpense.setName(expense.getName() != null ? expense.getName(): existingExpense.getName());
         existingExpense.setDescription(expense.getDescription() != null ? expense.getDescription() : existingExpense.getDescription());
         existingExpense.setAmount(expense.getAmount() != null ? expense.getAmount() : existingExpense.getAmount());

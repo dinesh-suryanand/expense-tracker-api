@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -39,13 +40,15 @@ public class ExpenseController {
     }
 
 
+    //this method will add expenses through JSON object
     @ResponseStatus(code = HttpStatus.CREATED , reason = "created the expense")
     @PostMapping("/expenses")
-    public Expense saveExpenseDetails(@RequestBody Expense expense){
+    public Expense saveExpenseDetails(@Valid @RequestBody Expense expense){
         return expenseService.saveExpenseDetails(expense);
     }
 
 
+    //this will update the fields when required JSON is given
     @PutMapping("/expenses/{id}")
     public Expense updateExpenseDetails(@RequestBody Expense expense , @PathVariable Long id){
         return expenseService.updateExpenseDetails(id,expense);
